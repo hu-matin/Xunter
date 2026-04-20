@@ -1,0 +1,2 @@
+excute all of your configs here that can be readable by main script.
+if you don't want to add them one by one, run add_configs script to add and copy them here.
