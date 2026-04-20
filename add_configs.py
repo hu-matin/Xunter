@@ -54,19 +54,24 @@ def add_file_config():
 
 def main():
 
-    print(Fore.CYAN + "\n1) Add new link config to (JSON)" + Style.RESET_ALL)
-    print(Fore.CYAN + "2) Add new file config to (configs/) folder" + Style.RESET_ALL)
+    while True:
+        
+        print(Fore.CYAN + "\n1) Add new link config to (JSON)" + Style.RESET_ALL)
+        print(Fore.CYAN + "2) Add new file config to (configs/) folder" + Style.RESET_ALL)
 
-    choice = input(Fore.YELLOW + "Select 1 or 2: " + Style.RESET_ALL)
+        choice = input(Fore.YELLOW + "Select [1/2] or type [e] to exit the code: " + Style.RESET_ALL)
 
-    if choice == "1":
-        auto_add_new_link_config()
+        if choice == "1":
+            auto_add_new_link_config()
 
-    elif choice == "2":
-        add_file_config()
+        elif choice == "2":
+            add_file_config()
 
-    else:
-        print(Fore.RED + "Invalid choice!" + Style.RESET_ALL)
+        elif choice == "e".lower():
+            break
+
+        else:
+            print(Fore.RED + "Invalid choice!" + Style.RESET_ALL)
 
 
 if __name__ == "__main__":
