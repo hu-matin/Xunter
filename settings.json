@@ -1,0 +1,6 @@
+{
+  "timeout": 2,
+  "workers": 3,
+  "test_url": "https://www.google.com",
+  "socks_port_start": 10808
+}

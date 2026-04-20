@@ -1,0 +1,9 @@
+{
+    "configs": [
+        {
+            "name": "CONFIG_NAME",
+            "type": "TYPE_OF_CONFIG",
+            "raw": "CONFIG_LINK"
+        }
+    ]
+}
