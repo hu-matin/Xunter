@@ -109,7 +109,7 @@ Edit `configs.json`:
 
 ---
 
-### Method 2: Easy Mode (Recommended)
+### Method 2: adding one by one
 
 ```bash
 python add_configs.py
@@ -117,6 +117,23 @@ python add_configs.py
 
 ✔ No JSON knowledge required
 ✔ Beginner-friendly
+
+---
+
+### Method 3: Easy Mode (Recommended)
+
+**Run the file and enter your .txt path.**
+
+```bash
+python add_configs_by_txt.py
+```
+
+✔ No JSON knowledge required
+✔ Beginner-friendly
+✔ Adding configs by `.txt` file
+✔ Adding name automaticly
+✔ Detecting type automaticly
+
 
 ---
 
