@@ -9,9 +9,10 @@ labels = ["""
 ]
 
 
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 import platform, os, random
 
+init()
 
 OS = platform.uname()[0]
 
