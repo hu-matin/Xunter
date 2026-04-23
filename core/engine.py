@@ -7,10 +7,10 @@ from core.xray_runner import run_xray
 from utils.tester import *
 from utils.score import score
 from utils.table import create_table, color, score_color
+from utils.check_configs import save_active
 
 from rich.live import Live
 from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
-
 
 
 def get_name(c):
@@ -27,6 +27,7 @@ def get_name(c):
         return filename
 
     return "unknown"
+
 
 def run_engine(link_configs, file_configs, settings, xray):
 
@@ -45,9 +46,15 @@ def run_engine(link_configs, file_configs, settings, xray):
 
         if c["mode"] == "file":
 
-            raw = {
+            raw_run = {
                 "file": c["file"],
                 "type": c.get("type", "file")
+            }
+
+            raw_save = {
+                "name": name,
+                "type": c.get("type", "file"),
+                "raw": c["file"]
             }
 
         else:
@@ -58,11 +65,17 @@ def run_engine(link_configs, file_configs, settings, xray):
                 return None
 
             try:
-                raw = proto.build(c, port)
+                raw_run = proto.build(c, port)
             except:
                 return None
 
-        proc = run_xray(xray, raw)
+            raw_save = {
+                "name": name,
+                "type": c["type"],
+                "raw": original.get("raw")
+            }
+
+        proc = run_xray(xray, raw_run)
 
         start = time.time()
         ok = False
@@ -93,6 +106,9 @@ def run_engine(link_configs, file_configs, settings, xray):
 
         r["score"] = score(r)
 
+        if r["score"] >= 60:
+            save_active([raw_save])
+
         return r
 
     def add_row(r):
@@ -110,7 +126,7 @@ def run_engine(link_configs, file_configs, settings, xray):
 
     MAX = settings["workers"]
 
-    with Live(table, refresh_per_second=40):
+    with Live(table, refresh_per_second=10):
 
         with ThreadPoolExecutor(max_workers=MAX) as executor:
 
