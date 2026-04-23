@@ -2,8 +2,9 @@ import json
 import os
 import shutil
 
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 
+init()
 
 CONFIG_FILE = "configs.json"
 CONFIG_FOLDER = "configs"
@@ -55,7 +56,7 @@ def add_file_config():
 def main():
 
     while True:
-        
+
         print(Fore.CYAN + "\n1) Add new link config to (JSON)" + Style.RESET_ALL)
         print(Fore.CYAN + "2) Add new file config to (configs/) folder" + Style.RESET_ALL)
 
