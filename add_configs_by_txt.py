@@ -2,8 +2,9 @@ import json
 import os
 import random
 import string
-from colorama import Fore, Style
+from colorama import Fore, Style, init
 
+init()
 
 CONFIG_FILE = "configs.json"
 
@@ -38,7 +39,7 @@ def save_json(data):
 def extract_configs_from_txt(path):
 
     if not os.path.exists(path):
-        print(Fore.RED + "File not found!" + Style.REST_ALL)
+        print(Fore.RED + "File not found!" + Style.RESET_ALL)
         return
 
     data = load_json()
@@ -77,7 +78,7 @@ def extract_configs_from_txt(path):
 
 def main():
 
-    path = input(Fore.YELLOW + "Enter path to txt file: " + Style.RESET_ALL).strip()
+    path = input(Fore.YELLOW + "Enter path to txt file: " + Style.RESET_ALL)
 
     extract_configs_from_txt(path)
 
